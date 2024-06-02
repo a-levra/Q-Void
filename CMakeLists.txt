@@ -13,8 +13,9 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
-        main.cpp
-
+        src/main.cpp
+        src/Bullet.cpp
+        include/Q-Void.hpp
 
 
 )
@@ -38,7 +39,9 @@ else()
     else()
         add_executable(Q-Void
             ${PROJECT_SOURCES}
-            myrect.h myrect.cpp
+                include/MyRect.h src/MyRect.cpp
+                include/Bullet.hpp
+                src/Bullet.cpp
         )
     endif()
 endif()
