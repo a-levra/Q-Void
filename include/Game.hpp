@@ -26,6 +26,9 @@ class Game : public QObject{
 		void setScene(QGraphicsScene *p_scene);
 		void setFixedSize(int width, int height);
 		void playBackgroundMusic() const;
+		void createScene();
+		void createScore();
+		void createAndShowView() const;
 };
 
 #endif
