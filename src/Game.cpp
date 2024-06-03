@@ -9,7 +9,16 @@ Game::Game(void) {
 
 	createScore();
 	playBackgroundMusic();
+
+	loadBackground();
+
 	createAndShowView();
+}
+
+void Game::loadBackground() {
+	QBrush brush;
+	brush.setTextureImage(QImage(":/assets/space_background.png"));
+	scene->setBackgroundBrush(brush);
 }
 
 void Game::createAndShowView() const {
@@ -41,6 +50,7 @@ void Game::playBackgroundMusic() const {
 
 Game::~Game(void) {}
 
+//todo this is not consistent : sometimes we add items to the scene here, sometimes in the constructor
 void Game::show() {
 	scene->addItem(player);
 	scene->addItem(score);

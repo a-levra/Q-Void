@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/assets">
         <file>spacecraft.png</file>
+        <file>space_background.png</file>
     </qresource>
     <qresource prefix="/"/>
     <qresource prefix="/sounds">

@@ -29,6 +29,7 @@ class Game : public QObject{
 		void createScene();
 		void createScore();
 		void createAndShowView() const;
+		void loadBackground();
 };
 
 #endif
