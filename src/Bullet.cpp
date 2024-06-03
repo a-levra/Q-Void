@@ -8,16 +8,26 @@
 extern Game *game;
 
 Bullet::Bullet(void) {
-	setRect(0, 0, 10, 50);
-	printf("Bullet::Bullet() x: %f y: %f\n", pos().x(), pos().y()); //debug
+//	setRect(0, 0, 10, 50);
+	QPixmap bullet(":/assets/laser-shot.png");
+	bullet = bullet.scaled(BULLET_WIDTH, BULLET_HEIGHT);
+	setPixmap(bullet);
 	QTimer *timer = new QTimer();
 	connect(timer, SIGNAL(timeout()), this, SLOT(move()));
 	timer->start(50);
 }
 
 Bullet::Bullet(qreal posX, qreal posY) {
-	setRect(posX - BULLET_HALF_WIDTH, posY, BULLET_WIDTH, BULLET_HEIGHT);
-	printf("Bullet::Bullet(posX, posY) x: %f y: %f\n", pos().x(), pos().y()); //debug
+	QPixmap bullet(":/assets/laser-shot.png");
+	bullet = bullet.scaled(BULLET_WIDTH, BULLET_HEIGHT);
+	setPixmap(bullet);
+
+	//play sound : pew pew
+	QMediaPlayer *player = new QMediaPlayer();
+	player->setMedia(QUrl("qrc:/sounds/laser-shot.mp3"));
+	player->play();
+
+	setPos(posX - BULLET_HALF_WIDTH, posY - BULLET_HEIGHT);
 	QTimer *timer = new QTimer();
 	connect(timer, SIGNAL(timeout()), this, SLOT(move()));
 	timer->start(50);
@@ -41,9 +51,8 @@ void Bullet::move() {
 	if (check_collision())
 		return;
 
-	setPos(0, y()-10);
-	if (pos().y() + rect().height()  < -MAIN_WINDOW_HEIGHT) {
-		printf("Bullet::move() DELETION x: %f y: %f\n", pos().x(), pos().y()); //debug
+	setPos(pos().x(), pos().y() - 10);
+	if (pos().y() + BULLET_HEIGHT  < -MAIN_WINDOW_HEIGHT) {
 		scene()->removeItem(this);
 		delete this;
 	}
