@@ -3,6 +3,7 @@
 
 #include "Q-Void.hpp"
 
+
 class Bullet : public QObject, public QGraphicsRectItem{
 	Q_OBJECT
 	public:

@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/assets">
+        <file>spacecraft.png</file>
+    </qresource>
+    <qresource prefix="/"/>
+    <qresource prefix="/sounds">
+        <file>1.mp3</file>
+    </qresource>
+    <qresource prefix="/fonts">
+        <file>SoccerScoreboard.otf</file>
+    </qresource>
+</RCC>

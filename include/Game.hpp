@@ -3,13 +3,14 @@
 
 #include "Q-Void.hpp"
 
-
 class Game : public QObject{
 	Q_OBJECT
+
 	public:
 		Game();
 		virtual ~Game();
 		void show();
+		void updateScore();
 	public slots:
 		void spawnEnemy();
 	private:
@@ -19,13 +20,12 @@ class Game : public QObject{
 		QList<Enemy *> enemies;
 		QList<Bullet *> bullets;
 		Score* score;
-		QGraphicsTextItem * scoreText;
-		void updateScore();
-		void gameOver();
-		void restartGame();
-		void clearScene();
+//		void gameOver();
+//		void restartGame();
+//		void clearScene();
 		void setScene(QGraphicsScene *p_scene);
 		void setFixedSize(int width, int height);
+		void playBackgroundMusic() const;
 };
 
 #endif

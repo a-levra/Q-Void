@@ -9,7 +9,9 @@ class Score : public QGraphicsTextItem{
 		virtual ~Score();
 		void increase();
 		int getScore();
+		void setScore(int newScore);
 	private:
+		QGraphicsTextItem * scoreText;
 		int score;
 
 };

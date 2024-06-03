@@ -4,7 +4,18 @@ Player::Player(QGraphicsItem *parent) : QGraphicsPixmapItem(parent) {
 	setPos(MAIN_WINDOW_WIDTH / 2 - PLAYER_WIDTH / 2, MAIN_WINDOW_HEIGHT - PLAYER_HEIGHT);
 	setFlag(QGraphicsItem::ItemIsFocusable);
 	setFocus();
-	setPixmap(QPixmap(":/assets/spacecraft2.png"));
+	auto res = QPixmap(":/assets/spacecraft.png");
+	if (res.isNull()) {
+		printf("Player::Player() res is null\n");
+	}
+	setPixmap(res.scaled(PLAYER_WIDTH, PLAYER_HEIGHT));
+
+	//automatic movement of the player
+	QTimer *timer = new QTimer();
+	connect(timer, SIGNAL(timeout()), this, SLOT(updateMovements()));
+	timer->start(1);
+	movements = 0;
+
 //	health = new Health();
 //	health->setPos(health->x(), health->y() + 25);
 //	scene()->addItem(health);
@@ -16,16 +27,16 @@ void Player::keyPressEvent(QKeyEvent *event){
 	}
 	switch (event->key()) {
 		case Qt::Key_A:
-			TrySetPos(x()-10, y());
+			this->movements |= LEFT;
 			break;
 		case Qt::Key_D:
-			TrySetPos(x()+10, y());
+			this->movements |= RIGHT;
 			break;
 		case Qt::Key_W:
-			TrySetPos(x(), y()-10);
+			this->movements |= UP;
 			break;
 		case Qt::Key_S:
-			TrySetPos(x(), y()+10);
+			this->movements |= DOWN;
 			break;
 		case Qt::Key_Escape:
 			exit(0);
@@ -33,8 +44,27 @@ void Player::keyPressEvent(QKeyEvent *event){
 		case Qt::Key_Space:
 			printf("Player::keyPressEvent() x: %f y: %f\n", pos().x(), pos().y()); // debug
 			Bullet * bullet = new Bullet(x() + PLAYER_WIDTH / 2, y());
-//			Bullet * bullet = new Bullet();
 			scene()->addItem(bullet);
+	}
+}
+
+void Player::keyReleaseEvent(QKeyEvent *event) {
+	if (event->isAutoRepeat()) {
+		return;
+	}
+	switch (event->key()) {
+		case Qt::Key_A:
+			this->movements &= ~LEFT;
+			break;
+		case Qt::Key_D:
+			this->movements &= ~RIGHT;
+			break;
+		case Qt::Key_W:
+			this->movements &= ~UP;
+			break;
+		case Qt::Key_S:
+			this->movements &= ~DOWN;
+			break;
 	}
 }
 
@@ -46,6 +76,21 @@ void Player::TrySetPos(qreal x, qreal y) {
 		return;
 	}
 	setPos(x, y);
+}
+
+void Player::updateMovements() {
+	if (this->movements & LEFT) { //this is not right, to check if the
+		TrySetPos(x()-1, y());
+	}
+	if (this->movements & RIGHT) {
+		TrySetPos(x()+1, y());
+	}
+	if (this->movements & UP) {
+		TrySetPos(x(), y()-1);
+	}
+	if (this->movements & DOWN) {
+		TrySetPos(x(), y()+1);
+	}
 }
 
 //int Player::decrementHealth() {

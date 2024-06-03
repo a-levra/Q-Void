@@ -1,8 +1,11 @@
 #include "Bullet.hpp"
+#include "Game.hpp"
 
 #define BULLET_WIDTH 10
 #define BULLET_HALF_WIDTH 5
 #define BULLET_HEIGHT 50
+
+extern Game *game;
 
 Bullet::Bullet(void) {
 	setRect(0, 0, 10, 50);
@@ -46,11 +49,12 @@ void Bullet::move() {
 	}
 }
 
+
 bool Bullet::check_collision() {
 	QList<QGraphicsItem *> colliding_items = collidingItems();
 	for (int i = 0, n = colliding_items.size(); i < n; i++) {
 		if (typeid(*(colliding_items[i])) == typeid(Enemy)) {
-			printf("Bullet::check_collision() COLLISION x: %f y: %f\n", pos().x(), pos().y()); //debug
+			game->updateScore();
 			scene()->removeItem(colliding_items[i]);
 			scene()->removeItem(this);
 			delete colliding_items[i];

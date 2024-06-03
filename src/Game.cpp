@@ -1,5 +1,4 @@
 #include "Game.hpp"
-#include "Score.hpp"
 
 Game::Game(void) {
 
@@ -9,23 +8,19 @@ Game::Game(void) {
 	setScene(scene);
 	setFixedSize(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT);
 
-	// Create the player
 	player = new Player();
 
-	// Create the score
-	score = new Score();
-
-	// Create the enemy
 	timer = new QTimer();
 	QObject::connect(timer, SIGNAL(timeout()), this, SLOT(spawnEnemy()));
 	timer->start(2000);
 
-	// Play background music
-//	QMediaPlayer *music = new QMediaPlayer();
-//	music->setMedia(QUrl("qrc:/sounds/bgsound.mp3"));
-//	music->play();
+	score = new Score();
+	score->setPos(score->x(), score->y() + 25);
+	score->setScore(0);
+	scene->addItem(score);
 
-	//in order for the window to appear, we need to add the scene to a view  :
+	playBackgroundMusic();
+
 	QGraphicsView * view = new QGraphicsView(scene);
 	view->setFixedSize(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT);
 	view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -33,12 +28,20 @@ Game::Game(void) {
 	view->show();
 }
 
+void Game::playBackgroundMusic() const {
+	QMediaPlayer *music = new QMediaPlayer();
+	music->setMedia(QUrl("qrc:/sounds/1.mp3"));
+	if (!music->isAudioAvailable()) {
+		qDebug() << "Media not found"; //todo handle properly
+	}
+	music->play();
+}
 
 Game::~Game(void) {}
 
 void Game::show() {
 	scene->addItem(player);
-	scene->addItem(score);
+//	scene->addItem(score);
 //	scene->addItem(player->getHealth());
 }
 
@@ -53,6 +56,10 @@ void Game::setFixedSize(int width, int height) {
 void Game::spawnEnemy() {
 	Enemy * enemy = new Enemy();
 	scene->addItem(enemy);
+}
+
+void Game::updateScore() {
+	score->increase();
 }
 
 

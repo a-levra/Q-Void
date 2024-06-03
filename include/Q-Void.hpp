@@ -9,6 +9,7 @@
 #include <cstdlib>
 
 #include <QApplication>
+#include <QMediaPlayer>
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QGraphicsItem>
@@ -18,7 +19,9 @@
 #include <QDebug>
 #include <QTimer>
 #include <QGraphicsTextItem>
-
+#include <QFontDatabase>
+#include <QGraphicsOpacityEffect>
+#include <QFont>
 
 #include "Bullet.hpp"
 #include "Player.h"
