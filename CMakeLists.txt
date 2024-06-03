@@ -12,11 +12,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
+include_directories(include)
+
 set(PROJECT_SOURCES
         src/main.cpp
         src/Bullet.cpp
         include/Q-Void.hpp
-
+        include/Enemy.hpp
+        src/Enemy.cpp
+        src/Game.cpp
+        include/Game.hpp
+        src/Score.cpp
+        include/Score.hpp
 
 )
 
@@ -39,7 +46,7 @@ else()
     else()
         add_executable(Q-Void
             ${PROJECT_SOURCES}
-                include/MyRect.h src/MyRect.cpp
+                include/Player.h src/Player.cpp
                 include/Bullet.hpp
                 src/Bullet.cpp
         )
