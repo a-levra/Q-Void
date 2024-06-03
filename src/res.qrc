@@ -2,6 +2,14 @@
     <qresource prefix="/assets">
         <file>spacecraft.png</file>
         <file>space_background.png</file>
+        <file>bigmama.png</file>
+        <file>blue_enemy.png</file>
+        <file>cthulhu-eye.png</file>
+        <file>cyclop-mob.png</file>
+        <file>tentacle-eye.png</file>
+        <file>yellow_enemy.png</file>
+        <file>yellow2_enemy.png</file>
+        <file>laser-shot.png</file>
     </qresource>
     <qresource prefix="/"/>
     <qresource prefix="/sounds">

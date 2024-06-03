@@ -1,7 +1,14 @@
 #include "Enemy.hpp"
 
 Enemy::Enemy(void) {
-	setRect(rand() % (MAIN_WINDOW_WIDTH - ENEMY_WIDTH), 0 , ENEMY_WIDTH, ENEMY_HEIGHT);
+	auto enemy = QPixmap(":/assets/blue_enemy.png");
+	enemy = enemy.scaled(50, 50);
+	setPixmap(enemy);
+
+	//set random position on x axis
+	int random_number = rand() % 700;
+	setPos(random_number, 0);
+
 	QTimer *timer = new QTimer();
 	connect(timer, SIGNAL(timeout()), this, SLOT(move()));
 	timer->start(5);

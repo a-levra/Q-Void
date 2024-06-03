@@ -3,10 +3,8 @@
 
 #include "Q-Void.hpp"
 
-#define ENEMY_WIDTH 50
-#define ENEMY_HEIGHT 50
 
-class Enemy : public QObject, public QGraphicsRectItem{
+class Enemy : public QObject, public QGraphicsPixmapItem {
 	Q_OBJECT
 	public:
 		Enemy();
