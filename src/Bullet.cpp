@@ -1,4 +1,5 @@
 #include "Bullet.hpp"
+#include "Prop.hpp"
 #include "Game.hpp"
 
 #define BULLET_WIDTH 10
@@ -67,6 +68,11 @@ bool Bullet::check_collision() {
 			scene()->removeItem(colliding_items[i]);
 			scene()->removeItem(this);
 			delete colliding_items[i];
+			delete this;
+			return (true);
+		}
+		if (typeid(*(colliding_items[i])) == typeid(Prop)) {
+			scene()->removeItem(this);
 			delete this;
 			return (true);
 		}

@@ -16,7 +16,7 @@ Score::Score(void) {
 
 	// Set the opacity
 	QGraphicsOpacityEffect *opacityEffect = new QGraphicsOpacityEffect;
-	opacityEffect->setOpacity(0.05); // Set the desired opacity (0.0 to 1.0)
+	opacityEffect->setOpacity(0.15); // Set the desired opacity (0.0 to 1.0)
 	this->setGraphicsEffect(opacityEffect);
 
 	this->setFont(font);

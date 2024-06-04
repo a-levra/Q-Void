@@ -9,7 +9,6 @@ class Enemy : public QObject, public QGraphicsPixmapItem {
 	public:
 		Enemy();
 		virtual ~Enemy();
-
 	public slots:
 		void move();
 };

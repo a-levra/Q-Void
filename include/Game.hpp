@@ -11,17 +11,23 @@ class Game : public QObject{
 		virtual ~Game();
 		void show();
 		void updateScore();
+		void updateDebugText(qreal px, qreal py);
+		void updateAmmoText(int ammo);
 	public slots:
 		void spawnEnemy();
 		void spawnProp();
+		void checkCollision();
 	private:
 		QGraphicsScene * scene;
 		Player * player;
+		QTimer * collisionCheckerTimer;
 		QTimer * enemySpwanerTimer;
 		QTimer * propSpwanerTimer;
 		QList<Enemy *> enemies;
 		QList<Bullet *> bullets;
 		Score* score;
+		QGraphicsTextItem * debugText;
+		QGraphicsTextItem ** ammoText;
 //		void gameOver();
 //		void restartGame();
 //		void clearScene();
@@ -32,6 +38,8 @@ class Game : public QObject{
 		void createScore();
 		void createAndShowView() const;
 		void loadBackground();
+		void createDebugText();
+		void createAmmoText();
 };
 
 #endif

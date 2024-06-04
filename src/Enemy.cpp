@@ -18,6 +18,7 @@ Enemy::Enemy(void) {
 Enemy::~Enemy(void) {}
 
 void Enemy::move() {
+	qreal px, py;
 	setPos(pos().x(), pos().y() + 1);
 	if (pos().y() > MAIN_WINDOW_HEIGHT) {
 		delete this;

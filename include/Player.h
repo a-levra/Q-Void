@@ -19,11 +19,18 @@ public:
     void keyPressEvent(QKeyEvent * event) override;
 	void keyReleaseEvent(QKeyEvent *event) override;
 	void TrySetPos(qreal x, qreal y);
+	bool checkCollision();
+	void getPos(qreal &x, qreal &y);
 //	int decrementHealth();
 //	Health* getHealth();
+	void collision();
+	void setAmmo(int i);
 public slots:
 	void updateMovements();
 private:
+		int ammo;
+		qreal px;
+		qreal py;
 //		Health* health;
 		char movements;
 

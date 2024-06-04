@@ -3,7 +3,7 @@
 
 Prop::Prop(void) {
 
-	int propId = rand() % 6;
+	int propId = rand() % 7;
 	QPixmap prop;
 	switch (propId) {
 		case 0:
@@ -24,15 +24,25 @@ Prop::Prop(void) {
 		case 5:
 			prop = QPixmap(":/assets/asteroid.png");
 			break;
+		case 6:
+			prop = QPixmap(":/assets/gift.png");
+			type = GIFT;
+			break;
 
 	}
-	double scale = (rand() % 10 + 1) *0.1;
+	if (type == GIFT) {
+		prop = prop.scaled(100, 100);
+		speed = 0.1;
+	}
+	else {
+		double scale = (rand() % 10 + 1) *0.1;
+		prop = prop.scaled(50 * scale, 50 * scale);
+		speed = (1 / scale + 1) * 0.1;
+	}
 
-	prop = prop.scaled(50 * scale, 50 * scale);
 
 	setPixmap(prop);
 	setPos(rand() % MAIN_WINDOW_WIDTH, -MAIN_WINDOW_HEIGHT / 2);
-	speed = (1 / scale + 1) * 0.1;
 
 
 
@@ -50,4 +60,8 @@ void Prop::move() {
 		scene()->removeItem(this);
 		delete this;
 	}
+}
+
+char Prop::getType() {
+	return type;
 }

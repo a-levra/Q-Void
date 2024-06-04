@@ -15,11 +15,14 @@
         <file>blackhole.png</file>
         <file>planet-earth.png</file>
         <file>planet-magma.png</file>
+        <file>gift.png</file>
     </qresource>
     <qresource prefix="/"/>
     <qresource prefix="/sounds">
         <file>1.mp3</file>
         <file>laser-shot.mp3</file>
+        <file>empty-ammo.mp3</file>
+        <file>gift.mp3</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>SoccerScoreboard.otf</file>
