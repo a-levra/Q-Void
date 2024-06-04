@@ -26,6 +26,7 @@ Bullet::Bullet(qreal posX, qreal posY) {
 	//play sound : pew pew
 	QMediaPlayer *player = new QMediaPlayer();
 	player->setMedia(QUrl("qrc:/sounds/laser-shot.mp3"));
+	player->setVolume(20);
 	player->play();
 
 	setPos(posX - BULLET_HALF_WIDTH, posY - BULLET_HEIGHT);

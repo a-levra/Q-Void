@@ -19,10 +19,10 @@
     </qresource>
     <qresource prefix="/"/>
     <qresource prefix="/sounds">
-        <file>1.mp3</file>
         <file>laser-shot.mp3</file>
         <file>empty-ammo.mp3</file>
         <file>gift.mp3</file>
+        <file>pix-space-travel.mp3</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>SoccerScoreboard.otf</file>

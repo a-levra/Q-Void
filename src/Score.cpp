@@ -26,7 +26,7 @@ Score::Score(void) {
 Score::~Score(void) {}
 
 void Score::increase() {
-	this->score++;
+	this->score+=10;
 	this->setPlainText( QString::number(this->score));
 }
 

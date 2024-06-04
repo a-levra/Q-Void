@@ -56,7 +56,7 @@ void Player::keyPressEvent(QKeyEvent *event){
 			else {
 				QMediaPlayer *player = new QMediaPlayer();
 				player->setMedia(QUrl("qrc:/sounds/empty-ammo.mp3"));
-				player->setVolume(50);
+				player->setVolume(10);
 				player->play();
 			}
 
@@ -101,16 +101,16 @@ void Player::TrySetPos(qreal x, qreal y) {
 
 void Player::updateMovements() {
 	if (this->movements & LEFT) {
-		TrySetPos(x()-1, y());
+		TrySetPos(x()-0.5, y());
 	}
 	if (this->movements & RIGHT) {
-		TrySetPos(x()+1, y());
+		TrySetPos(x()+0.5, y());
 	}
 	if (this->movements & UP) {
-		TrySetPos(x(), y()-1);
+		TrySetPos(x(), y()-0.5);
 	}
 	if (this->movements & DOWN) {
-		TrySetPos(x(), y()+1);
+		TrySetPos(x(), y()+0.5);
 	}
 }
 
@@ -162,6 +162,7 @@ void Player::setAmmo(int i) {
 	game->updateAmmoText(ammo);
 	QMediaPlayer *player = new QMediaPlayer();
 	player->setMedia(QUrl("qrc:/sounds/gift.mp3"));
+	player->setVolume(20);
 	player->play();
 }
 

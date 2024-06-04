@@ -54,7 +54,7 @@ void Game::createScene() {
 
 void Game::playBackgroundMusic() const {
 	QMediaPlayer *music = new QMediaPlayer();
-	music->setMedia(QUrl("qrc:/sounds/1.mp3"));
+	music->setMedia(QUrl("qrc:/sounds/pix-space-travel.mp3"));
 	music->play();
 }
 
