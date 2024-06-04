@@ -10,6 +10,11 @@
         <file>yellow_enemy.png</file>
         <file>yellow2_enemy.png</file>
         <file>laser-shot.png</file>
+        <file>asteroid.png</file>
+        <file>asteroid2.png</file>
+        <file>blackhole.png</file>
+        <file>planet-earth.png</file>
+        <file>planet-magma.png</file>
     </qresource>
     <qresource prefix="/"/>
     <qresource prefix="/sounds">

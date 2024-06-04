@@ -7,7 +7,7 @@ Enemy::Enemy(void) {
 
 	//set random position on x axis
 	int random_number = rand() % 700;
-	setPos(random_number, 0);
+	setPos(random_number, -200);
 
 	QTimer *timer = new QTimer();
 	connect(timer, SIGNAL(timeout()), this, SLOT(move()));

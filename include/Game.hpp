@@ -13,10 +13,12 @@ class Game : public QObject{
 		void updateScore();
 	public slots:
 		void spawnEnemy();
+		void spawnProp();
 	private:
 		QGraphicsScene * scene;
 		Player * player;
-		QTimer * timer;
+		QTimer * enemySpwanerTimer;
+		QTimer * propSpwanerTimer;
 		QList<Enemy *> enemies;
 		QList<Bullet *> bullets;
 		Score* score;

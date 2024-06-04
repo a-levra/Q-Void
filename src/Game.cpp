@@ -1,11 +1,17 @@
 #include "Game.hpp"
+#include "Prop.hpp"
 
 Game::Game(void) {
 	createScene();
 	player = new Player();
-	timer = new QTimer();
-	QObject::connect(timer, SIGNAL(timeout()), this, SLOT(spawnEnemy()));
-	timer->start(2000);
+
+	enemySpwanerTimer = new QTimer();
+	QObject::connect(enemySpwanerTimer, SIGNAL(timeout()), this, SLOT(spawnEnemy()));
+	enemySpwanerTimer->start(2000);
+
+	propSpwanerTimer = new QTimer();
+	QObject::connect(propSpwanerTimer, SIGNAL(timeout()), this, SLOT(spawnProp()));
+	propSpwanerTimer->start(1000);
 
 	createScore();
 	playBackgroundMusic();
@@ -68,6 +74,11 @@ void Game::setFixedSize(int width, int height) {
 void Game::spawnEnemy() {
 	Enemy * enemy = new Enemy();
 	scene->addItem(enemy);
+}
+
+void Game::spawnProp() {
+	Prop * prop = new Prop();
+	scene->addItem(prop);
 }
 
 void Game::updateScore() {

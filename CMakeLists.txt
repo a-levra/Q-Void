@@ -24,6 +24,8 @@ set(PROJECT_SOURCES
         include/Game.hpp
         src/Score.cpp
         include/Score.hpp
+        src/Prop.cpp
+        include/Prop.hpp
 
 )
 
